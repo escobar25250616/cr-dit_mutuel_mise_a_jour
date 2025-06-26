@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Accueil - Crédit Mutuel</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #f7f9fc;
+    color: #0a1f47;
+  }
+
+  header {
+    background: white;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0; left: 0;
+    z-index: 1000;
+  }
+
+  .header-left, .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .search-button {
+    background: #cce0ff;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .search-button svg {
+    width: 20px;
+    height: 20px;
+    fill: #004b91;
+  }
+
+  .logo {
+    height: 44px;
+    cursor: pointer;
+  }
+
+  .btn-round {
+    background-color: #004b91;
+    border: none;
+    border-radius: 24px;
+    padding: 10px 22px;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    user-select: none;
+    white-space: nowrap;
+  }
+  .btn-round:hover {
+    background-color: #00366a;
+  }
+
+  main {
+    padding: 100px 20px 40px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* TEXTE Livret Enfant sur fond blanc */
+  .livret-text-container {
+    background: white;
+    border-radius: 12px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .livret-text-container h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .livret-text-container p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0 auto;
+    max-width: 400px;
+  }
+
+  /* IMAGE en bas du texte, pleine largeur */
+  .livret-image {
+    max-width: 480px;
+    margin: 0 auto 40px;
+  }
+  .livret-image img {
+    width: 100%;
+    border-radius: 12px;
+    display: block;
+  }
+
+  footer {
+    background: white;
+    color: #0a1f47;
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 14px;
+    box-shadow: 0 -1px 4px rgba(0,0,0,0.1);
+    position: relative;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    main {
+      padding: 90px 15px 40px;
+      max-width: 100%;
+    }
+    .livret-text-container {
+      padding: 24px 16px;
+      margin-bottom: 16px;
+    }
+    .livret-text-container h2 {
+      font-size: 26px;
+    }
+    .livret-text-container p {
+      font-size: 16px;
+      max-width: 100%;
+    }
+    .livret-image {
+      max-width: 100%;
+      margin-bottom: 30px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <div class="search-button" title="Recherche" role="button" tabindex="0" aria-label="Recherche" onclick="alert('Recherche non implémentée')">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#004b91" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="7"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+</div>
+    <img src="data:image/png;base64,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" alt="Logo Crédit Mutuel" class="logo" />
+  </div>
+  <div class="header-right">
+    <button class="btn-round" onclick="window.location.href='/login'">Espace client</button>
+    <button class="btn-round" onclick="window.location.href='/ouvrir_compte'">Ouvrir un compte</button>
+  </div>
+</header>
+
+<main>
+  <div class="livret-text-container" role="region" aria-label="Livret Enfant description">
+    <h2>Livret Enfant</h2>
+    <p>
+      5,70% brut, ce n’est pas tous les jours<br>
+      Un taux qui marque les esprits, un livret qui fait la différence.<br>
+      Et si l’avenir commençait par ce petit geste-là ?
+    </p>
+  </div>
+
+  <div class="livret-image" role="img" aria-label="Photo enfant souriant Livret Enfant Crédit Mutuel">
+    <img src="https://cdnwmsi.e-i.com/SITW/wm/global/1.0.0/af/assets/produits/livret-enfant/cm_hero-home_x2.avif?1" alt="Enfant sourire Livret Enfant Crédit Mutuel" />
+  </div>
+</main>
+
+<footer>
+  Crédit Mutuel - Une banque qui appartient à ses clients, ça change tout.
+</footer>
+
+</body>
+</html>
